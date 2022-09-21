@@ -19,19 +19,38 @@ struct ContentView: View {
 
     var body: some View {
 
-        VStack(alignment: .leading) {
-            
-            Text(article?.title ?? "placeholder-copy-title")
-                .font(.headline)
-            Text(article?.author ?? "placeholder-copy-author")
-                .font(.subheadline)
-            Text(article?.year ?? String.placeholder(length: 4))
-                .font(.subheadline)
-            Text("www.apple.com")
-                .font(.system(size: 14.0))
-                .unredacted() // unredacted portion of the whole redacted block
-        }.padding()
-            .redacted(reason: article == nil ? .placeholder : [])
+        NavigationView {
+            ScrollView {
+                GeometryReader { geometry in
+                    VStack(alignment: .center) {
+                            MajorArticleView()
+                                .frame(width: geometry.size.width-30, height: 425)
+                        Divider()
+                        ArticleView()
+                        ArticleView()
+                    }
+                        .navigationTitle("Headlines")
+                }
+            }
+        }
+
+//        VStack(alignment: .leading, spacing: 10) {
+//            ArticleView()
+//            ArticleView()
+//        }
+//        VStack(alignment: .leading) {
+//
+//            Text(article?.title ?? "placeholder-copy-title")
+//                .font(.headline)
+//            Text(article?.author ?? "placeholder-copy-author")
+//                .font(.subheadline)
+//            Text(article?.year ?? String.placeholder(length: 4))
+//                .font(.subheadline)
+//            Text("www.apple.com")
+//                .font(.system(size: 14.0))
+//                .unredacted() // unredacted portion of the whole redacted block
+//        }.padding()
+//            .redacted(reason: article == nil ? .placeholder : [])
     }
 }
 
