@@ -19,20 +19,22 @@ struct ContentView: View {
 
     var body: some View {
 
-        NavigationView {
-            ScrollView {
-                GeometryReader { geometry in
-                    VStack(alignment: .center) {
-                            MajorArticleView()
-                                .frame(width: geometry.size.width-30, height: 425)
-                        Divider()
-                        ArticleView()
-                        ArticleView()
-                    }
-                        .navigationTitle("Headlines")
-                }
-            }
-        }
+        RedactedShimmerView()
+//        NavigationView {
+//            ScrollView {
+//                GeometryReader { geometry in
+//                    VStack(alignment: .center) {
+//                            MajorArticleView()
+//                                .frame(width: geometry.size.width-30, height: 425)
+//                        Divider()
+//
+//                        // ArticleView()
+//                        ArticleView()
+//                    }
+//                        .navigationTitle("Headlines")
+//                }
+//            }
+//        }
 
 //        VStack(alignment: .leading, spacing: 10) {
 //            ArticleView()
