@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+struct User: Decodable {
+    var users: [People] = []
+}
+
+struct People: Identifiable, Decodable {
+    var id: Int
+    var firstName: String
+    var lastName: String
+    var image: String
+    var age: Int
+}

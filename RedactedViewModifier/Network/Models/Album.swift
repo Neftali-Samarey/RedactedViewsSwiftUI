@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct Album: Identifiable, Decodable {
+    var id: Int
+    var title: String
+    var url: String
+    var thumbnailUrl: String
+}
