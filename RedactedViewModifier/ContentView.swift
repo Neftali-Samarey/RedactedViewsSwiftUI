@@ -15,50 +15,46 @@ struct Article {
 
 struct ContentView: View {
 
-    @State var article: Article?
+    @EnvironmentObject var network: Network
 
     var body: some View {
 
-        RedactedShimmerView()
-//        NavigationView {
-//            ScrollView {
-//                GeometryReader { geometry in
-//                    VStack(alignment: .center) {
-//                            MajorArticleView()
-//                                .frame(width: geometry.size.width-30, height: 425)
-//                        Divider()
-//
-//                        // ArticleView()
-//                        ArticleView()
-//                    }
-//                        .navigationTitle("Headlines")
-//                }
-//            }
-//        }
+        NavigationView {
+            GeometryReader { geometry in
+                ScrollView(.vertical, showsIndicators: true) {
+                    ForEach(network.user.users) { content in
+                        VStack(alignment: .center) {
+                            AsyncImage(url: URL(string: content.image)) { image in
+                                image.scaledToFit()
+                                
+                            } placeholder: {
+                                RedactedShimmerView()
+                            }
+                            .frame(width: geometry.size.width - 30, height: 200)
+                            .clipShape(RoundedRectangle(cornerRadius: 25))
+                            .overlay(RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray.opacity(0.5), lineWidth: 1))
 
-//        VStack(alignment: .leading, spacing: 10) {
-//            ArticleView()
-//            ArticleView()
-//        }
-//        VStack(alignment: .leading) {
-//
-//            Text(article?.title ?? "placeholder-copy-title")
-//                .font(.headline)
-//            Text(article?.author ?? "placeholder-copy-author")
-//                .font(.subheadline)
-//            Text(article?.year ?? String.placeholder(length: 4))
-//                .font(.subheadline)
-//            Text("www.apple.com")
-//                .font(.system(size: 14.0))
-//                .unredacted() // unredacted portion of the whole redacted block
-//        }.padding()
-//            .redacted(reason: article == nil ? .placeholder : [])
+                            Text(content.firstName + " " + content.lastName)
+                                .font(.headline)
+                                .redacted(reason: network.isLoading ? .placeholder : [])
+                        }
+                    }
+                    .onAppear {
+                        network.fetchUsers()
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+            }
+            .navigationTitle("Content")
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(Network())
     }
 }
 
@@ -75,4 +71,25 @@ extension View {
     func redacted(if condition: @autoclosure ()-> Bool) -> some View {
         redacted(reason: condition() ? .placeholder: [])
     }
+
+    // Redaction
+    func redactable() -> some View {
+        modifier(Redactable())
+      }
+}
+
+extension Image {
+    func customData(url: URL) -> Self {
+        if let data = try? Data(contentsOf: url) {
+            return Image(uiImage: UIImage(data: data)!)
+                .resizable()
+        }
+        return self
+            .resizable()
+    }
+}
+
+extension RedactionReasons {
+
+    public static let loading = RedactionReasons(rawValue: 1 << 10)
 }
