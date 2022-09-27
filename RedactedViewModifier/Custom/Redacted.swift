@@ -18,6 +18,21 @@ public enum RedactionReason {
   case shimmer
 }
 
+
+// MARK: - Added Sept 27th.
+extension RedactionReasons {
+    public static let shinny = RedactionReasons(rawValue: 1 << 10)
+}
+
+//struct Redactable: ViewModifier {
+//    @Environment(\.redactionReasons) private var reasons
+//
+//    @ViewBuilder
+//}
+
+// end of Sept 27th
+
+
 // MARK: Step 2: Define Modifiers
 
 struct Placeholder: ViewModifier {
@@ -93,7 +108,7 @@ struct RedactableView: ViewModifier {
 
     case .shimmer:
       content
-            .modifier(Shimmer(configuration: .default))
+        .modifier(Shimmer(configuration: .default))
 
     case nil:
       content
@@ -101,7 +116,7 @@ struct RedactableView: ViewModifier {
   }
 }
 
-// MARK: Step 4: Define View Extension
+// MARK: Step 4: Define View Extension **
 
 extension View {
   func redacted(reason: RedactionReason?) -> some View {

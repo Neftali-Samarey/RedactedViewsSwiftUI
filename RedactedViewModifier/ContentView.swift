@@ -37,11 +37,14 @@ struct ContentView: View {
 
                             Text(content.firstName + " " + content.lastName)
                                 .font(.headline)
+                                .redactable2()
+                                .redacted(reason: network.isLoading ? .shinny : []) // sept 27
+                                // .redacted(reason: network.isLoading ? .shinny : [])
                                 // .redacted(reason: network.isLoading ? .placeholder : [])
 
                             Text("Age: \(content.age)").bold()
-                                .redacted(reason: .placeholder)
-                                .shimmer()
+                                //.redacted(reason: .placeholder)
+                                //.shimmer()
                         }
                     }
                     .onAppear {
@@ -80,6 +83,11 @@ extension View {
     func redactable() -> some View {
         modifier(Redactable())
       }
+
+    // Sept 27th
+    func redactable2() -> some View {
+        modifier(Redactable())
+    }
 
 //    func shimmer(configuration: ShimmerConfiguration = .default) -> some View {
 //        // ViewModifier in Redacted.swift

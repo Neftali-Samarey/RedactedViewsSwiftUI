@@ -10,12 +10,13 @@ import SwiftUI
 struct Redactable: ViewModifier {
     @Environment(\.redactionReasons) private var reasons
 
+    // Sept 27
     @ViewBuilder
     func body(content: Content) -> some View {
-        if reasons.contains(.loading) {
+        if reasons.contains(.shinny) {
             content
-                .accessibility(label: Text("Loading ..."))
-                .overlay(Color.black)
+                //.modifier(Shimmer(configuration: .default))
+                .background(Color.black)
         } else {
             content
         }
