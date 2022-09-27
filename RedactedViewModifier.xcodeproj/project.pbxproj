@@ -17,6 +17,7 @@
 		EDC4B2F928E1ADE400520F9F /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC4B2F828E1ADE400520F9F /* Album.swift */; };
 		EDC4B2FB28E1C47000520F9F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC4B2FA28E1C47000520F9F /* User.swift */; };
 		EDC4B2FD28E1FBCF00520F9F /* ShimmerViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC4B2FC28E1FBCF00520F9F /* ShimmerViewModifier.swift */; };
+		EDC4B30028E22F7900520F9F /* Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC4B2FF28E22F7900520F9F /* Redacted.swift */; };
 		EDCAD3E028DB48B400A46408 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCAD3DF28DB48B400A46408 /* ArticleView.swift */; };
 		EDCAD3E328DB519A00A46408 /* MajorArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCAD3E228DB519A00A46408 /* MajorArticleView.swift */; };
 /* End PBXBuildFile section */
@@ -33,6 +34,7 @@
 		EDC4B2F828E1ADE400520F9F /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		EDC4B2FA28E1C47000520F9F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EDC4B2FC28E1FBCF00520F9F /* ShimmerViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerViewModifier.swift; sourceTree = "<group>"; };
+		EDC4B2FF28E22F7900520F9F /* Redacted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redacted.swift; sourceTree = "<group>"; };
 		EDCAD3DF28DB48B400A46408 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		EDCAD3E228DB519A00A46408 /* MajorArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorArticleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +69,7 @@
 		EDC4B2E028DA8AEE00520F9F /* RedactedViewModifier */ = {
 			isa = PBXGroup;
 			children = (
+				EDC4B2FE28E22F6400520F9F /* Custom */,
 				EDC4B2F228DF9CC900520F9F /* Network */,
 				EDC4B2E128DA8AEE00520F9F /* RedactedViewModifierApp.swift */,
 				EDCAD3E128DB50DA00A46408 /* Views */,
@@ -112,6 +115,14 @@
 				EDC4B2FA28E1C47000520F9F /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EDC4B2FE28E22F6400520F9F /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				EDC4B2FF28E22F7900520F9F /* Redacted.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		EDCAD3E128DB50DA00A46408 /* Views */ = {
@@ -198,6 +209,7 @@
 				EDC4B2E428DA8AEE00520F9F /* ContentView.swift in Sources */,
 				EDC4B2F428DF9CDB00520F9F /* Network.swift in Sources */,
 				EDCAD3E328DB519A00A46408 /* MajorArticleView.swift in Sources */,
+				EDC4B30028E22F7900520F9F /* Redacted.swift in Sources */,
 				EDCAD3E028DB48B400A46408 /* ArticleView.swift in Sources */,
 				EDC4B2FB28E1C47000520F9F /* User.swift in Sources */,
 				EDC4B2F728DF9DF500520F9F /* Post.swift in Sources */,

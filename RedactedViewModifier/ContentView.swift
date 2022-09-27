@@ -26,18 +26,22 @@ struct ContentView: View {
                         VStack(alignment: .center) {
                             AsyncImage(url: URL(string: content.image)) { image in
                                 image.scaledToFit()
-                                
+
                             } placeholder: {
                                 RedactedShimmerView()
                             }
                             .frame(width: geometry.size.width - 30, height: 200)
-                            .clipShape(RoundedRectangle(cornerRadius: 25))
+                            .clipShape(RoundedRectangle(cornerRadius: 0))
                             .overlay(RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.gray.opacity(0.5), lineWidth: 1))
 
                             Text(content.firstName + " " + content.lastName)
                                 .font(.headline)
-                                .redacted(reason: network.isLoading ? .placeholder : [])
+                                // .redacted(reason: network.isLoading ? .placeholder : [])
+
+                            Text("Age: \(content.age)").bold()
+                                .redacted(reason: .placeholder)
+                                .shimmer()
                         }
                     }
                     .onAppear {
@@ -76,6 +80,11 @@ extension View {
     func redactable() -> some View {
         modifier(Redactable())
       }
+
+//    func shimmer(configuration: ShimmerConfiguration = .default) -> some View {
+//        // ViewModifier in Redacted.swift
+//        // modifier(Shimmer(configuration: configuration))
+//    }
 }
 
 extension Image {
